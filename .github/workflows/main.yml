@@ -23,10 +23,11 @@ jobs:
           mvn clean
           mvn -B package --file pom.xml
 
-      - name: Super-Linter
-        # You may pin to the exact commit or the version.
-        # uses: super-linter/super-linter@b92721f792f381cedc002ecdbb9847a15ece5bb8
-        uses: super-linter/super-linter@v7.1.0
-
-      
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v6.10.0
+        with:
+              context: .
+              dockerfile: Dockerfile
+              push: false #for now
+              tags: ${{ secrets.DOCKER_USERNAME }}/2048:$(date-'%Y-%m-%d%H-%M-%S')
           
