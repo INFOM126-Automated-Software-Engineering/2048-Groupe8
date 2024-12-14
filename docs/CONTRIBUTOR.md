@@ -1,3 +1,7 @@
+**Package Management Policy**
+
+    In case Dependabot fails, check on : https://deps.dev/
+
 **Branch Management Policy**
 
 Branch Naming Convention:
