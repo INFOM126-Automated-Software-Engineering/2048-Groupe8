@@ -29,5 +29,5 @@ jobs:
               context: .
               dockerfile: Dockerfile
               push: false #for now
-              tags: ${{ secrets.DOCKER_USERNAME }}/2048:$(date-'%Y-%m-%d%H-%M-%S')
+              tags: ${{ secrets.DOCKER_USERNAME }}/2048-app:latest
           
