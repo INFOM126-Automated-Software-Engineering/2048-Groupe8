@@ -18,6 +18,7 @@
   </properties>
 
   <build>
+    <finalName>2048 Game</finalName>
     <plugins>
       <plugin>
         <!-- Build an executable JAR -->
