@@ -26,7 +26,7 @@ jobs:
             distribution: 'zulu' # Alternative distribution options are available.
       - name: Compile and package
         run: mvn clean package -DskipTests
-      - run: mkdir staging && mv target/2048.jar target/2048-${{ env.build-number }}.jar && cp target/*.jar staging
+      - run: mkdir staging && mv target/2048-1.0.jar target/2048-1.0${{ env.build-number }}.jar && cp target/*.jar staging
       - uses: actions/upload-artifact@v3
         with:
           name: Package
