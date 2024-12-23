@@ -20,11 +20,20 @@
   <build>
     <plugins>
       <plugin>
+        <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.10.0</version>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>be.unamur.game2048.Game</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
@@ -41,6 +50,7 @@
           </excludedClasses>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 
