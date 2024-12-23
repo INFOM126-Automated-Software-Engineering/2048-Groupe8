@@ -7,6 +7,7 @@
 
   <groupId>be.unamur.game2048</groupId>
   <artifactId>2048</artifactId>
+  <version>1.0</version>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
