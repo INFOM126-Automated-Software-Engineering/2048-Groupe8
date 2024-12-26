@@ -8,8 +8,7 @@ on:
 
   push:
     branches:
-#      - * # All branches TODO: uncomment before merging to main
-      - main
+      - * # All branches
   pull_request:
     types: [opened, synchronize, reopened]
 
