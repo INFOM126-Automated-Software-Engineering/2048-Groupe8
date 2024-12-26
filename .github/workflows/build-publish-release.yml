@@ -1,24 +1,26 @@
-name : Deploy & Release 2048 app
+name : Analysis, Build and Publish Release
 
 on:
-  workflow_run:
-    workflows: ["SonarQube", "CodeQL Advanced"]
-    types:
-      - completed
+  # Set this to be able to reuse workflows
+  workflow_dispatch:
   push:
-  pull_request:
     branches:
       - main
-      - master
-      - CI/CI-Pipeline  # TODO: to remove before merging to main
+      - CI/CD-Pipeline # TODO: to remove before merging to main
 
 env:
   build-number: ${GITHUB_RUN_NUMBER}
 
 jobs:
-  build:
+  sonar:
+    name: SonarQube analysis
+    uses: ./.github/workflows/sonar.yml
+    secrets: inherit
+
+  build-publish-release:
+    needs: sonar # Ensure that the sonar Quality gates passed before publishing the release
     permissions: write-all
-    name: Build and analyze
+    name: Build and Publish Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
