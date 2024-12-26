@@ -2,7 +2,7 @@ name : Deploy & Release 2048 app
 
 on:
   workflow_run:
-    workflows: ["sonar", "codeql"]
+    workflows: ["SonarQube", "CodeQL Advanced"]
     types:
       - completed
   push:
