@@ -1,12 +1,16 @@
 name : Deploy & Release 2048 app
 
 on:
+  workflow_run:
+    workflows: ["sonar", "codeql"]
+    types:
+      - completed
   push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
+      - master
+      - CI/CI-Pipeline  # TODO: to remove before merging to main
 
 env:
   build-number: ${GITHUB_RUN_NUMBER}
