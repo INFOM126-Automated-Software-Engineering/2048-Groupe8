@@ -1,5 +1,6 @@
 name: SonarQube
 on:
+  # Set as a reusable workflow
   workflow_call:
     secrets:
       SONAR_TOKEN:
@@ -7,10 +8,11 @@ on:
 
   push:
     branches:
+#      - * # All branches TODO: uncomment before merging to main
       - main
-      - master
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   build:
     name: Build and analyze

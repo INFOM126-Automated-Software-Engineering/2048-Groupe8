@@ -1,26 +1,25 @@
-name : Deploy & Release 2048 app
+name : Analysis, Build and Publish Release
 
 on:
+  # Set this to be able to reuse workflows
   workflow_dispatch:
   push:
-  pull_request:
     branches:
       - main
-      - master
-      - CI/CI-Pipeline  # TODO: to remove before merging to main
+      - CI/CD-Pipeline # TODO: to remove before merging to main
 
 env:
   build-number: ${GITHUB_RUN_NUMBER}
 
 jobs:
   sonar:
+    name: SonarQube analysis
     uses: ./.github/workflows/sonar.yml
     secrets: inherit
 
   build:
     needs: sonar
-    permissions: write-all
-    name: Build and analyze
+    name: Build and Package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -30,6 +29,13 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
       - run: mvn clean package -DskipTests
+
+  publish-release:
+    needs: [sonar, build] # Ensure that the sonar Quality gates passed and the build job is completed before publishing the release
+    permissions: write-all
+    name: Publish Release
+    runs-on: ubuntu-latest
+    steps:
       - run: mkdir staging && mv target/2048.jar target/2048-v1.0.${{ env.build-number }}.jar && cp target/*.jar staging
       - uses: actions/upload-artifact@v3
         with:
