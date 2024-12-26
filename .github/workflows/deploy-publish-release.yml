@@ -15,6 +15,7 @@ env:
 jobs:
   sonar:
     uses: ./.github/workflows/sonar.yml
+    secrets: inherit
 
   build:
     permissions: write-all
