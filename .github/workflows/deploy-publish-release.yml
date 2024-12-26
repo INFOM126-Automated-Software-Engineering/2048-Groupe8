@@ -1,10 +1,7 @@
 name : Deploy & Release 2048 app
 
 on:
-  workflow_run:
-    workflows: ["SonarQube", "CodeQL Advanced"]
-    types:
-      - completed
+  workflow_dispatch:
   push:
   pull_request:
     branches:
@@ -16,6 +13,9 @@ env:
   build-number: ${GITHUB_RUN_NUMBER}
 
 jobs:
+  sonar:
+    uses: ./.github/workflows/sonar.yml
+
   build:
     permissions: write-all
     name: Build and analyze
