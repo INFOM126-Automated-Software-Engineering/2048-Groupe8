@@ -18,6 +18,7 @@ jobs:
     secrets: inherit
 
   build:
+    needs: sonar
     permissions: write-all
     name: Build and analyze
     runs-on: ubuntu-latest
