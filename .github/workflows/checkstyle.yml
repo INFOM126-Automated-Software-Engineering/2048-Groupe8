@@ -1,6 +1,6 @@
 name: CheckStyle
 
-on: pull_request
+on: push
 
 jobs:
   checkstyle_job:
