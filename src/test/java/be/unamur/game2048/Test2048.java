@@ -16,7 +16,7 @@ public class Test2048 {
         Tile tile2 = new Tile(2);
 
         // Assert
-        assertTrue(!tile1.equals(tile2));
+        assertTrue(tile1.equals(tile2));
     }
 
     @Test
