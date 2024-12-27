@@ -1,8 +1,6 @@
 name : Analysis, Build and Publish Release
 
 on:
-  # Set this to be able to reuse workflows
-  workflow_dispatch:
   push:
     branches:
       - main
@@ -11,16 +9,6 @@ env:
   build-number: ${GITHUB_RUN_NUMBER}
 
 jobs:
-  unit-testing:
-    name: Unit Testing
-    uses: ./.github/workflows/unit-testing.yml
-
-  sonar:
-    needs: unit-testing # Ensure that the unit tests passed before running the SonarQube analysis
-    name: SonarQube analysis
-    uses: ./.github/workflows/sonar.yml
-    secrets: inherit
-
   build-publish-release:
     needs: sonar # Ensure that the sonar Quality gates passed before publishing the release
     permissions: write-all

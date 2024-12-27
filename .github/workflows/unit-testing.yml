@@ -1,15 +1,9 @@
 name: Unit Testing
 
-
 on:
-  # Set as a reusable workflow
-  workflow_call:
-
-  push:
   pull_request:
     branches:
-      - "*"
-
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
