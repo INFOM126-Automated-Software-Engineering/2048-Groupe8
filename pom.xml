@@ -58,34 +58,6 @@
           </excludedClasses>
         </configuration>
       </plugin>
-
-      <!-- SpotBugs -->
-      <plugin>
-        <groupId>com.github.spotbugs</groupId>
-        <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>4.8.6.4</version>
-        <configuration>
-          <xmlOutput>true</xmlOutput>
-          <failOnError>false</failOnError>
-          <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
-          <excludeFilterFile>spotbugs-security-exclude.xml</excludeFilterFile>
-          <plugins>
-            <plugin>
-              <groupId>com.h3xstream.findsecbugs</groupId>
-              <artifactId>findsecbugs-plugin</artifactId>
-              <version>1.12.0</version>
-            </plugin>
-          </plugins>
-        </configuration>
-        <dependencies>
-          <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
-          <dependency>
-            <groupId>com.github.spotbugs</groupId>
-            <artifactId>spotbugs</artifactId>
-            <version>4.8.6</version>
-          </dependency>
-        </dependencies>
-      </plugin>
     </plugins>
   </build>
 
