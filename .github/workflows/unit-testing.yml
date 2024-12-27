@@ -28,6 +28,6 @@ jobs:
         if: success() || failure()
         with:
           name: Test Results
-          path: ${{ github.workspace }}/target/surefire-reports/TEST-TestSuite.xml
+          path: ${{ github.workspace }}/target/surefire-reports/TEST-be.unamur.game2048.Test2048.xml
           reporter: java-junit
           java-version: 11
