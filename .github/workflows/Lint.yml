@@ -23,6 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_JAVA: "true"
           IGNORE_GITIGNORED_FILES: true
+          FIX_GOOGLE_JAVA_FORMAT: true
 
       - name: Commit and push linting fixes
         if: >
