@@ -91,6 +91,7 @@
         <artifactId>maven-pmd-plugin</artifactId>
         <version>3.23.0</version>
         <configuration>
+          <includeTests>true</includeTests>
           <!-- failOnViolation is actually true by default, but can be disabled -->
           <failOnViolation>false</failOnViolation>
           <!-- printFailingErrors is pretty useful -->
