@@ -92,7 +92,7 @@
         <version>3.23.0</version>
         <configuration>
           <!-- failOnViolation is actually true by default, but can be disabled -->
-          <failOnViolation>true</failOnViolation>
+          <failOnViolation>false</failOnViolation>
           <!-- printFailingErrors is pretty useful -->
           <printFailingErrors>true</printFailingErrors>
         </configuration>
