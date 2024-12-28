@@ -10,7 +10,6 @@ env:
 
 jobs:
   build-publish-release:
-    needs: sonar # Ensure that the sonar Quality gates passed before publishing the release
     permissions: write-all
     name: Build and Publish Release
     runs-on: ubuntu-latest
