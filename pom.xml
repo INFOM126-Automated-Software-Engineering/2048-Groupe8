@@ -15,9 +15,26 @@
     <!-- SonarQube Cloud configuration -->
     <sonar.organization>infom126-automated-software-engineering</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+    <!-- SonarCloud jacoco configuration -->
     <sonar.coverage.jacoco.xmlReportPaths>
-      ./target/site/jacoco/jacoco.xml
+      target/site/jacoco/jacoco.xml
     </sonar.coverage.jacoco.xmlReportPaths>
+
+    <!-- SonarCloud PMD configuration -->
+    <sonar.java.pmd.reportPaths>
+      target/pmd.xml
+    </sonar.java.pmd.reportPaths>
+
+    <!-- SonarCloud Checkstyle configuration -->
+    <sonar.java.checkstyle.reportPaths>
+      target/checkstyle-result.xml
+    </sonar.java.checkstyle.reportPaths>
+
+    <!-- Sonarcloud SpotBugs configuration -->
+    <sonar.java.spotbugs.reportPaths>
+      target/spotbugs.xml
+    </sonar.java.spotbugs.reportPaths>
   </properties>
 
   <build>
@@ -87,6 +104,95 @@
           </excludedClasses>
         </configuration>
       </plugin>
+
+      <!-- SpotBugs -->
+      <plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.8.6.4</version>
+        <configuration>
+          <xmlOutput>true</xmlOutput>
+          <failOnError>false</failOnError>
+          <includeFilterFile>spotbugs-security-include.xml</includeFilterFile>
+          <excludeFilterFile>spotbugs-security-exclude.xml</excludeFilterFile>
+          <plugins>
+            <plugin>
+              <groupId>com.h3xstream.findsecbugs</groupId>
+              <artifactId>findsecbugs-plugin</artifactId>
+              <version>1.12.0</version>
+            </plugin>
+          </plugins>
+        </configuration>
+        <executions>
+            <execution>
+                <goals>
+                <goal>check</goal>
+                </goals>
+            </execution>
+        </executions>
+      </plugin>
+
+      <!-- PMD static analyser -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.23.0</version>
+        <configuration>
+          <!-- failOnViolation is actually true by default, but can be disabled -->
+          <failOnViolation>false</failOnViolation>
+          <!-- printFailingErrors is pretty useful -->
+          <printFailingErrors>true</printFailingErrors>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>check</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Checkstyle for code formatting  -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.1.1</version>
+        <configuration>
+          <failsOnError>false</failsOnError>
+          <failOnViolation>false</failOnViolation>
+        </configuration>
+        <executions>
+          <execution>
+            <id>verify</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>checkstyle</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Jacoco -->
+      <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>0.8.7</version>
+          <executions>
+          <execution>
+              <id>prepare-agent</id>
+              <goals>
+              <goal>prepare-agent</goal>
+              </goals>
+          </execution>
+          <execution>
+              <id>report</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>report</goal>
+              </goals>
+          </execution>
+          </executions>
+      </plugin>
     </plugins>
   </build>
 
@@ -113,6 +219,13 @@
       <artifactId>junit</artifactId>
       <version>4.13.2</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+    <dependency>
+      <groupId>org.jacoco</groupId>
+      <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.12</version>
     </dependency>
   </dependencies>
 </project>
