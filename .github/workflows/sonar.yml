@@ -1,7 +1,13 @@
 name: SonarQube
 
-on: [pull_request]
-
+#on: [pull_request] // TODO: use this one for production
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - "*"
 jobs:
   build:
     name: Build and analyze
