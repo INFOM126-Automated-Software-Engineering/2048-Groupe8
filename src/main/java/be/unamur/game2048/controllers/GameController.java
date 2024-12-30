@@ -83,10 +83,6 @@ public class GameController {
         return false;
     }
 
-    public void foo(){
-        System.out.println("foo");
-    }
-
     public boolean moveUp(boolean checkingAvailableMoves) {
         return move(12, 15, 1, -4, checkingAvailableMoves);
     }
