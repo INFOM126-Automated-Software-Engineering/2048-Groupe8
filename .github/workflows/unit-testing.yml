@@ -41,3 +41,5 @@ jobs:
         with:
           paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
           token: ${{ secrets.GITHUB_TOKEN }}
+          pass-emoji: ':green_circle:'
+          fail-emoji: ':red_circle:'
