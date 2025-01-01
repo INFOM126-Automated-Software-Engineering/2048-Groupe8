@@ -21,9 +21,11 @@ jobs:
         uses: super-linter/super-linter@v5.7.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          VALIDATE_JAVA: "true"
-#          IGNORE_GITIGNORED_FILES: true
+          VALIDATE_JAVA: true
+          IGNORE_GITIGNORED_FILES: true
           FIX_GOOGLE_JAVA_FORMAT: true
+          RUN_LOCAL: true
+          ENABLE_FIXES: true
 
       - name: Commit and push linting fixes
         if: >
