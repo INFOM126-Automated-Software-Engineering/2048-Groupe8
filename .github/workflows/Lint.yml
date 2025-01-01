@@ -1,16 +1,16 @@
 name: Lint using super-linter
 
 on: [pull_request]
-
+permissions:
+  contents: read
+  
 jobs:
-  lint:
-    name: Lint using super-linter
-    runs-on: ubuntu-latest
-
+  fix-lint-issues:
     permissions:
-      contents: read
+      contents: write
       statuses: write
-
+      
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
