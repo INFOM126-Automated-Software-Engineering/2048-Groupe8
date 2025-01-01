@@ -13,7 +13,7 @@ jobs:
           
           target_branch=${GITHUB_BASE_REF}
           echo "target branch: $target_branch"
-          dev_regex="^(closes|bug|feature|hotfix|experiment)/JIRA-[0-9]+.*$"
+          dev_regex="^(closes|bug|feature|hotfix|experiment)"
           
           
           if [[ "$branch_name" =~ $dev_regex ]]; then
