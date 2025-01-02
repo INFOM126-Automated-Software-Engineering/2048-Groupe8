@@ -16,6 +16,9 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           architecture: x64
+  test:
+    runs-on: ubuntu-latest
+    steps:
       - name: Run the Maven verify phase
         run: mvn --batch-mode --update-snapshots verify
 
@@ -32,6 +35,9 @@ jobs:
           reporter: java-junit
           java-version: 11
 
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
       - name: Coverage report
         run : mvn jacoco:report
 
