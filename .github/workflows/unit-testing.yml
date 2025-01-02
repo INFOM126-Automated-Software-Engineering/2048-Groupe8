@@ -32,11 +32,6 @@ jobs:
           reporter: java-junit
           java-version: 11
 
-
-  coverage:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Add coverage to PR
         id: jacoco
         uses: madrapps/jacoco-report@v1.7.1
