@@ -26,6 +26,7 @@ jobs:
           FIX_GOOGLE_JAVA_FORMAT: true
           DEFAULT_BRANCH: ${{ github.event.pull_request.base.ref }}
           
+
       - name: Commit and push linting fixes
         if: >
           github.event_name == 'pull_request' &&  
