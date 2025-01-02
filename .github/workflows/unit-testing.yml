@@ -16,11 +16,6 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
           architecture: x64
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions: write-all
-    steps:
       - name: Run the Maven verify phase
         run: mvn --batch-mode --update-snapshots verify
 
@@ -37,8 +32,9 @@ jobs:
           reporter: java-junit
           java-version: 11
 
+
   coverage:
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Add coverage to PR
