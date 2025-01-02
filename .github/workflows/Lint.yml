@@ -18,15 +18,19 @@ jobs:
           fetch-depth: 0
 
       - name: Super-linter
-        uses: super-linter/super-linter@v5.7.2
+        uses: super-linter/super-linter@v7.2.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VALIDATE_ALL_CODEBASE: false
           VALIDATE_JAVA: true
+          VALIDATE_GOOGLE_JAVA_FORMAT: true
+          
           IGNORE_GITIGNORED_FILES: true
+          
           FIX_GOOGLE_JAVA_FORMAT: true
-          RUN_LOCAL: true
-          ENABLE_FIXES: true
-
+                    
+          DEFAULT_BRANCH: ${{ github.event.pull_request.base.ref }}
+          
       - name: Commit and push linting fixes
         if: >
           github.event_name == 'pull_request' &&  
@@ -34,6 +38,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
-          commit_message: "fix linting issues"
+          commit_message: "fix(super-linter):linting issues"
           commit_user_name: super-linter
           commit_user_email: super-linter@super-linter.dev
