@@ -4,6 +4,8 @@ on:
     types: ['opened']
 jobs:
   build:
+    permissions:
+      issues: read|write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
