@@ -5,7 +5,7 @@ on:
 jobs:
   build:
     permissions:
-      issues: read|write
+      issues: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
