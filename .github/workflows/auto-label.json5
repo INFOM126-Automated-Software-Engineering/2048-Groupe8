@@ -1,10 +1,10 @@
 // see inputs for more examples
 {
   labelsSynonyms: {
-    bug: ['error', 'need fix', 'not working', 'bug'],
+    bug: ['error', 'need fix', 'not working'],
     enhancement: ['upgrade'],
     feature: ['new', 'feature', 'is missing'],
-    question: ['help', 'how can i', 'where']
+    question: ['need help', 'how can i', 'where i can find']
   },
   labelsNotAllowed: [
     'documentation',
