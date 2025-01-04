@@ -20,7 +20,7 @@ jobs:
           distribution: 'temurin'
           architecture: x64
       - name: Generate Javadoc
-        run: mvn site
+        run: mvn javadoc:javadoc
       - name: Deploy JavaDoc 🚀
         uses: MathieuSoysal/Javadoc-publisher.yml@v2.5.0
         with:
@@ -29,4 +29,5 @@ jobs:
           java-version: 17
           target-folder: javadoc # url will be https://<username>.github.io/<repo>/javadoc, This can be left as nothing to generate javadocs in the root folder.
           project: maven # or gradle
+          javadoc-source-folder: target/reports/apidocs
           # subdirectories: moduleA moduleB #for subdirectories support, needs to be run with custom command
