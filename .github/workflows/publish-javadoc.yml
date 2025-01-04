@@ -20,7 +20,7 @@ jobs:
           distribution: 'temurin'
           architecture: x64
       - name: Generate Javadoc
-        run: mvn javadoc:javadoc
+        run: mvn site
       - name: Deploy JavaDoc 🚀
         uses: MathieuSoysal/Javadoc-publisher.yml@v2.5.0
         with:
