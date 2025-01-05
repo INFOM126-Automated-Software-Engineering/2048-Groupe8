@@ -1,8 +1,7 @@
 name: Pipeline Continuous Integration
 
 on:
-  push:
-    branches: [main]
+  workflow_call: # Allows workflows to be reused by other workflows.
 
 permissions: write-all
 
