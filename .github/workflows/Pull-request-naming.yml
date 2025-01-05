@@ -24,7 +24,7 @@ jobs:
           if [[ "$branch_name" =~ $dev_regex ]]; then
             echo "Branch name matches the first regex pattern."
             
-            fi
+            
           
           else
             echo "Branch name does not match any regex. Exiting..."
