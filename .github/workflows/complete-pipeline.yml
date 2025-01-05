@@ -8,7 +8,7 @@ on:
 permissions: write-all
 
 jobs:
-  - unit-testing:
+  unit-testing:
       name: Unit Test
       uses: ./.github/workflows/unit-testing.yml
 
