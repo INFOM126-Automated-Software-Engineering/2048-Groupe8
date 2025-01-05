@@ -2,6 +2,10 @@ name: Check Pull Request
 on:
   workflow_call: # Allows workflows to be reused by other workflows.
   pull_request: # Allows the workflow to be triggered on pull request events.
+    types:
+      - opened
+      - edited
+      - synchronize
 
 jobs:
   check_pr:
