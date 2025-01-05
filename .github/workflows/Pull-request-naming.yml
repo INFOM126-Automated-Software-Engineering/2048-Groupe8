@@ -1,5 +1,7 @@
 name: Check Pull Request
-on: pull_request
+on:
+  workflow_call: # Allows workflows to be reused by other workflows.
+  pull_request: # Allows the workflow to be triggered on pull request events.
 
 jobs:
   check_pr:
@@ -14,8 +16,6 @@ jobs:
           target_branch=${GITHUB_BASE_REF}
           echo "target branch: $target_branch"
           dev_regex="^(closes|bug|feature|hotfix|experiment)/"
-
-          
           
           if [[ "$branch_name" =~ $dev_regex ]]; then
             echo "Branch name matches the first regex pattern."
