@@ -1,7 +1,7 @@
 name: Deploy Javadoc
 
 on:
-  workflow_call:
+  workflow_call: # Allows this workflow to be called from another workflow
 
 jobs:
   publish:

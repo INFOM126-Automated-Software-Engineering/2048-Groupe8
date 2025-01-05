@@ -1,10 +1,12 @@
-name: Pipeline Deployment
+name: Pipeline Continuous Deployment
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_run:
-    workflows: ["Pipeline Execution Test"]
+    workflows: ["Pipeline Continuous Integration"]
     types:
       - completed
 
