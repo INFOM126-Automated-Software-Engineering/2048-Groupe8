@@ -43,7 +43,7 @@ jobs:
     needs: build-publish-release
     runs-on: ubuntu-latest
     name: Deploy Javadoc
-    uses: ./.github/workflows/deploy-javadoc.yml
+    uses: ./.github/workflows/publish-javadoc.yml
   deploy-website:
     needs: deploy-javadoc
     runs-on: ubuntu-latest
