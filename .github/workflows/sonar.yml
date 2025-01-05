@@ -6,6 +6,7 @@ on:
     secrets:
       SONAR_TOKEN:
         required: true
+  pull_request:
 
 jobs:
   build:

@@ -3,7 +3,7 @@ name: Conventional Commits
 on:
   workflow_call:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:

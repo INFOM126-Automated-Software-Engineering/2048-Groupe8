@@ -2,7 +2,7 @@ name : Build and Publish Release
 
 on:
   workflow_call:
-      
+
 env:
   build-number: ${GITHUB_RUN_NUMBER}
 
