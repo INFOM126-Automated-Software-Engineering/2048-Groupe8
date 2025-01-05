@@ -1,7 +1,7 @@
 name: Pipeline Deployment
 
 on:
-  pull_request:
+  push:
     branches: [main]
   workflow_run:
     workflows: ["Pipeline Execution Test"]
