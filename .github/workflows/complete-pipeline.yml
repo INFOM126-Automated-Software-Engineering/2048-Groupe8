@@ -5,6 +5,11 @@ on:
   pull_request:
     branches: [main]
 
+permission:
+    contents: read
+    pages: write
+    id-token: write
+
 jobs:
   pull_request-naming:
     name: Pull request naming check
@@ -13,13 +18,11 @@ jobs:
     needs: pull_request-naming
     name: Unit Testing
     uses: ./.github/workflows/unit-testing.yml
-    permissions: write-all
+#    permissions: write-all
   lint:
     needs: unit-testing
     name: Lint using super-linter
     uses: ./.github/workflows/Lint.yml
-    permissions:
-      content: read
   commit-request-naming:
     needs: lint
     name: Conventional Commits
@@ -28,16 +31,6 @@ jobs:
     needs: commit-request-naming
     name: CodeQL Analysis
     uses: ./.github/workflows/codeql.yml
-    permissions:
-      # required for all workflows
-      security-events: write
-
-      # required to fetch internal or private CodeQL packs
-      packages: read
-
-      # only required for workflows in private repositories
-      actions: read
-      contents: read
   sonar:
     name: SonarQube Scan
     uses: ./.github/workflows/sonar.yml
@@ -46,18 +39,11 @@ jobs:
     needs: sonar
     name: Build, Publish and release
     uses: ./.github/workflows/build-publish-release.yml
-    permissions: write-all
   publish-javadoc:
     needs: build-publish-release
     name: Publish Javadoc
     uses: ./.github/workflows/publish-javadoc.yml
-    permissions:
-      contents: write
   deploy-website:
     needs: deploy-javadoc
     name: Deploy Website for javadoc
     uses: ./.github/workflows/deploy-website.yml
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
