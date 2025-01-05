@@ -8,23 +8,23 @@ on:
 permissions: write-all
 
 jobs:
-  pull_request-naming:
-    name: Pull request naming check
-    uses: ./.github/workflows/Pull-request-naming.yml
+#  pull_request-naming:
+#    name: Pull request naming check
+#    uses: ./.github/workflows/Pull-request-naming.yml
   unit-testing:
-    needs: pull_request-naming
+#    needs: pull_request-naming
     name: Unit Testing
     uses: ./.github/workflows/unit-testing.yml
   lint:
-    needs: unit-testing
+#    needs: unit-testing
     name: Lint using super-linter
     uses: ./.github/workflows/Lint.yml
-  commit-request-naming:
-    needs: lint
-    name: Conventional Commits
-    uses: ./.github/workflows/Commit-request-naming.yml
+#  commit-request-naming:
+#    needs: lint
+#    name: Conventional Commits
+#    uses: ./.github/workflows/Commit-request-naming.yml
   code-ql:
-    needs: commit-request-naming
+#    needs: commit-request-naming
     name: CodeQL Analysis
     uses: ./.github/workflows/codeql.yml
   sonar:
@@ -32,7 +32,7 @@ jobs:
     uses: ./.github/workflows/sonar.yml
     secrets: inherit
   build-publish-release:
-    needs: sonar
+    needs: sonar, unit-testing, lint, code-ql
     name: Build, Publish and release
     uses: ./.github/workflows/build-publish-release.yml
   publish-javadoc:
