@@ -32,7 +32,7 @@ jobs:
     uses: ./.github/workflows/sonar.yml
     secrets: inherit
   build-publish-release:
-    needs: sonar, unit-testing, lint, code-ql
+    needs: [sonar, unit-testing, lint, code-ql]
     name: Build, Publish and release
     uses: ./.github/workflows/build-publish-release.yml
   publish-javadoc:
