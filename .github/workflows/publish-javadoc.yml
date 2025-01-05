@@ -16,9 +16,9 @@ jobs:
         uses: MathieuSoysal/Javadoc-publisher.yml@v2.5.0
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          javadoc-branch: javadoc
+          javadoc-branch: ${{github.head_ref}} # current branch
           java-version: 17
-          target-folder: javadoc # url will be https://<username>.github.io/<repo>/javadoc, This can be left as nothing to generate javadocs in the root folder.
+          target-folder: docs/javadoc # url will be https://<username>.github.io/<repo>/javadoc, This can be left as nothing to generate javadocs in the root folder.
           project: maven # or gradle
           javadoc-source-folder: target/reports/apidocs
           # subdirectories: moduleA moduleB #for subdirectories support, needs to be run with custom command
