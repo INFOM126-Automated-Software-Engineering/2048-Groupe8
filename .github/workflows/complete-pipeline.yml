@@ -44,6 +44,6 @@ jobs:
     name: Publish Javadoc
     uses: ./.github/workflows/publish-javadoc.yml
   deploy-website:
-    needs: deploy-javadoc
+    needs: publish-javadoc
     name: Deploy Website for javadoc
     uses: ./.github/workflows/deploy-website.yml
