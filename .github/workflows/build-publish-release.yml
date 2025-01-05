@@ -1,4 +1,4 @@
-name : Analysis, Build and Publish Release
+name : Build and Publish Release
 
 on:
   push:
@@ -23,12 +23,14 @@ jobs:
           architecture: x64
       - run: mvn clean package -DskipTests
       - run: mkdir staging && mv target/2048.jar target/2048-v1.0.${{ env.build-number }}.jar && cp target/*.jar staging
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: Package
           path: staging
           retention-days: 1
       - uses: marvinpinto/action-automatic-releases@latest
+        # require previous step to be successful
+        if: success()
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "2048-v1.0.${{ github.run_number }}"

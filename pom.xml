@@ -18,22 +18,22 @@
 
     <!-- SonarCloud jacoco configuration -->
     <sonar.coverage.jacoco.xmlReportPaths>
-      target/site/jacoco/jacoco.xml
+      ${project.basedir}/target/site/jacoco/jacoco.xml
     </sonar.coverage.jacoco.xmlReportPaths>
 
     <!-- SonarCloud PMD configuration -->
     <sonar.java.pmd.reportPaths>
-      target/pmd.xml
+      ${project.basedir}/target/pmd.xml
     </sonar.java.pmd.reportPaths>
 
     <!-- SonarCloud Checkstyle configuration -->
     <sonar.java.checkstyle.reportPaths>
-      target/checkstyle-result.xml
+      ${project.basedir}/target/checkstyle-result.xml
     </sonar.java.checkstyle.reportPaths>
 
     <!-- Sonarcloud SpotBugs configuration -->
     <sonar.java.spotbugs.reportPaths>
-      target/spotbugs.xml
+      ${project.basedir}/target/spotbugs.xml
     </sonar.java.spotbugs.reportPaths>
   </properties>
 
