@@ -8,54 +8,44 @@ on:
 jobs:
   pull_request-naming:
     runs-on: ubuntu-latest
-    steps:
-      - name: Pull request naming check
-      - uses: ./.github/workflows/Pull-request-naming.yml
+    name: Pull request naming check
+    uses: ./.github/workflows/Pull-request-naming.yml
   unit-testing:
     needs: pull_request-naming
     runs-on: ubuntu-latest
-    steps:
-        - name: Unit Testing
-        - uses: ./.github/workflows/unit-testing.yml
+    name: Unit Testing
+    uses: ./.github/workflows/unit-testing.yml
   lint:
     needs: unit-testing
     runs-on: ubuntu-latest
-    steps:
-      - name: Lint using super-linter
-      - uses: ./.github/workflows/Lint.yml
+    name: Lint using super-linter
+    uses: ./.github/workflows/Lint.yml
   commit-request-naming:
     needs: lint
     runs-on: ubuntu-latest
-    steps:
-      - name: Conventional Commits
-      - uses: ./.github/workflows/Commit-request-naming.yml
+    name: Conventional Commits
+    uses: ./.github/workflows/Commit-request-naming.yml
   code-ql:
     needs: commit-request-naming
     runs-on: ubuntu-latest
-    steps:
-      - name: CodeQL Analysis
-      - uses: ./.github/workflows/CodeQL.yml
+    name: CodeQL Analysis
+    uses: ./.github/workflows/CodeQL.yml
   sonar:
     runs-on: ubuntu-latest
-    steps:
-      - name: SonarQube Scan
-      - uses: ./.github/workflows/SonarQube.yml
+    name: SonarQube Scan
+    uses: ./.github/workflows/SonarQube.yml
   build-publish-release:
     needs: sonar
     runs-on: ubuntu-latest
-    steps:
-      - name: Build, Publish and release
-      - uses: ./.github/workflows/build-publish-release.yml
+    name: Build, Publish and release
+    uses: ./.github/workflows/build-publish-release.yml
   deploy-javadoc:
     needs: build-publish-release
     runs-on: ubuntu-latest
-    steps:
-      - name: Deploy Javadoc
-      - uses: ./.github/workflows/deploy-javadoc.yml
+    name: Deploy Javadoc
+    uses: ./.github/workflows/deploy-javadoc.yml
   deploy-website:
     needs: deploy-javadoc
     runs-on: ubuntu-latest
-    steps:
-      - name: Deploy Website for javadoc
-      - uses: ./.github/workflows/deploy-website.yml
-
+    name: Deploy Website for javadoc
+    uses: ./.github/workflows/deploy-website.yml
