@@ -13,6 +13,7 @@ jobs:
     needs: pull_request-naming
     name: Unit Testing
     uses: ./.github/workflows/unit-testing.yml
+    permissions: inherit
   lint:
     needs: unit-testing
     name: Lint using super-linter
