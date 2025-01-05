@@ -29,11 +29,11 @@ jobs:
     needs: commit-request-naming
     runs-on: ubuntu-latest
     name: CodeQL Analysis
-    uses: ./.github/workflows/CodeQL.yml
+    uses: ./.github/workflows/codeql.yml
   sonar:
     runs-on: ubuntu-latest
     name: SonarQube Scan
-    uses: ./.github/workflows/SonarQube.yml
+    uses: ./.github/workflows/sonar.yml
   build-publish-release:
     needs: sonar
     runs-on: ubuntu-latest
