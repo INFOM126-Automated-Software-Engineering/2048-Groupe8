@@ -31,3 +31,12 @@ jobs:
           path: ${{ github.workspace }}/target/surefire-reports/TEST-be.unamur.game2048.Test2048.xml
           reporter: java-junit
           java-version: 11
+
+      - name: Add coverage to PR
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.7.1
+        with:
+          paths: ${{ github.workspace }}/target/site/jacoco/jacoco.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pass-emoji: ':green_circle:'
+          fail-emoji: ':red_circle:'

@@ -26,7 +26,7 @@ Branch Merging Guidelines
         PRs must pass:
             Automated CI pipeline checks (build, test, and code quality).
             At least one code review by a project maintainer or assigned reviewer.
-        PRs should have a clear description referencing the issue being addressed (e.g., Closes #5).
+        PRs should have a clear description referencing the issue being addressed (e.g., closes #5, bug, fix, hotfix, experiment).
 
     Branch Protection Rules:
         Enable branch protection on main:

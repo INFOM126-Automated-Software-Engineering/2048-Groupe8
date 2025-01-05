@@ -1,0 +1,20 @@
+// see inputs for more examples
+{
+  labelsSynonyms: {
+    bug: ['error', 'need fix', 'not working'],
+    enhancement: ['upgrade'],
+    feature: ['new', 'feature', 'is missing'],
+    question: ['need help', 'how can i', 'where i can find']
+  },
+  labelsNotAllowed: [
+    'documentation',
+    'duplicate',
+    'good first issue',
+    'help wanted',
+    'invalid',
+    'dependencies',
+    'wontfix',
+  ],
+  defaultLabels: ['triage'],
+  ignoreComments: true
+}
