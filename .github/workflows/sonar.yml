@@ -1,7 +1,11 @@
 name: SonarQube
 
 on:
+  # Set as a reusable workflow
   workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
   pull_request:
     branches:
       - '**' # Analyze all branches
