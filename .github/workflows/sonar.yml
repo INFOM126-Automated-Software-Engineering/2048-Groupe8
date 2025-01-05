@@ -6,9 +6,6 @@ on:
     secrets:
       SONAR_TOKEN:
         required: true
-  pull_request:
-    branches:
-      - '**' # Analyze all branches
 
 jobs:
   build:
