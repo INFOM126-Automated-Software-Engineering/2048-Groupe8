@@ -1,0 +1,22 @@
+name: Pipeline Continuous Integration
+
+on:
+  push:
+    branches: [main]
+
+permissions: write-all
+
+jobs:
+  unit-testing:
+    name: Unit Testing
+    uses: ./.github/workflows/unit-testing.yml
+  lint:
+    name: Lint using super-linter
+    uses: ./.github/workflows/Lint.yml
+  code-ql:
+    name: CodeQL Analysis
+    uses: ./.github/workflows/codeql.yml
+  sonar:
+    name: SonarQube Scan
+    uses: ./.github/workflows/sonar.yml
+    secrets: inherit
