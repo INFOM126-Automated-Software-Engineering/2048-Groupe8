@@ -5,11 +5,7 @@ on:
   pull_request:
     branches: [main]
 
-permissions:
-    actions: write
-    contents: read
-    pages: write
-    id-token: write
+permissions: write-all
 
 jobs:
   pull_request-naming:
@@ -19,7 +15,6 @@ jobs:
     needs: pull_request-naming
     name: Unit Testing
     uses: ./.github/workflows/unit-testing.yml
-    permissions: write-all
   lint:
     needs: unit-testing
     name: Lint using super-linter
