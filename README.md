@@ -14,26 +14,26 @@ Ensure the following tools are installed on your system:
 # Getting Started
 1. Clone the Repository
 
-git clone https://github.com/INFOM126-Automated-Software-Engineering/2048-Groupe8.git
-cd 2048-Groupe8
+       git clone https://github.com/INFOM126-Automated-Software-Engineering/2048-Groupe8.git
+       cd 2048-Groupe8
 
 2. Build the Project with Maven
 
 Use Maven to compile the code and package the application:
 
-mvn clean install
+    mvn clean install
 
 3. Run Tests
 
 Run unit tests to ensure the application works as expected:
 
-mvn test
+     mvn test
 
 4. Generate Coverage Report
 
 To generate the code coverage report using Jacoco:
 
-mvn jacoco:report
+    mvn jacoco:report
 
 The report will be available in:
 
@@ -43,7 +43,7 @@ target/site/jacoco/index.html
 
 You can deploy the application using Maven's deploy plugin. Make sure to configure the distributionManagement section in your pom.xml file or provide a repository URL using the command-line option:
 
-mvn deploy -DaltDeploymentRepository=<id>::<layout>::<url>
+        mvn deploy -DaltDeploymentRepository=<id>::<layout>::<url>
 
 Example:
 
@@ -54,7 +54,7 @@ Run the Application
 
 After building the project, you can run the game:
 
-java -jar target/2048-Groupe8-<version>.jar
+      java -jar target/2048-Groupe8-<version>.jar
 
 Replace <version> with the appropriate version number of the packaged JAR file.
 #Contribution Guidelines
