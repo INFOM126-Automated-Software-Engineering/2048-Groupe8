@@ -73,7 +73,7 @@ It use multiple Github actions! You can view the CI/CD workflow files in the .gi
 
 # License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+This project is licensed under the GNU Free Documentation License. See the LICENSE file for more details.
 # Contact
 
 For any questions or issues, please open an issue or contact the development team.
