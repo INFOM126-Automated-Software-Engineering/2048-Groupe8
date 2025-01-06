@@ -1,0 +1,46 @@
+name: Telemetry logging
+
+on:
+  push:
+    branches: [main]
+
+permissions: write-all
+
+jobs:
+  telemetry:
+    name: Telemetry Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log mvn test time
+        run: |
+          TEST_START=$(date +%s)
+          echo "TEST_START=$TEST_START" >> $GITHUB_ENV
+          echo "Test start at: ${TEST_START}sec" >> telemetry_log.txt
+            mvn test || echo "Tests failed" >> telemetry_log.txt
+          TEST_END=$(date +%s)
+          echo "TEST_END=$TEST_END" >> $GITHUB_ENV
+          echo "Test end at: ${TEST_END}sec" >> telemetry_log.txt
+          echo "Test duration time: $((TEST_END - TEST_START))sec" >> telemetry_log.txt
+
+      - name: Run Tests and Collect Data
+        run: |
+          echo "System Information:" >> telemetry_log.txt
+          echo "Static CPU Information:" >> telemetry_log.txt
+          lscpu >> telemetry_log.txt
+          
+          echo "Real-Time CPU Usage (every second for 10 seconds):" >> telemetry_log.txt
+          mpstat 1 10 >> telemetry_log.txt
+
+          
+          echo "Memory Usage:" >> telemetry_log.txt
+          free -h >> telemetry_log.txt
+          
+      - name: Upload Telemetry
+        uses: actions/upload-artifact@v3
+        with:
+          name: telemetry-data
+          path: telemetry_log.txt
