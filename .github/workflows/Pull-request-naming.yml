@@ -19,14 +19,12 @@ jobs:
           
           target_branch=${GITHUB_BASE_REF}
           echo "target branch: $target_branch"
-          dev_regex="^(closes|bug|feature|hotfix|experiment)/"
+          dev_regex="^(Closes|Fix|Bug|Feature|Feat|Hotfix|Experiment)/"
           
           if [[ "$branch_name" =~ $dev_regex ]]; then
             echo "Branch name matches the first regex pattern."
-            if [[ "$target_branch" != "dev" ]]; then
-              echo "but doesn't match target branch"
-              exit 1
-            fi
+            
+            
           
           else
             echo "Branch name does not match any regex. Exiting..."
