@@ -41,8 +41,8 @@ jobs:
       - name: Build and test with Jacoco
         run: mvn clean verify jacoco:report
         #for coverage issue
-
       - name: Build and analyze
+        if: github.event.pull_request.user.login != 'dependabot[bot]'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
         run: 
