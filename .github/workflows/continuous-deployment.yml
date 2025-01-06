@@ -11,9 +11,9 @@ on:
 permissions: write-all
 
 jobs:
-  continous-integration:
-    name: Continuous Integration
-    uses: ./.github/workflows/continuous-integration.yml
+#  continous-integration:
+#    name: Continuous Integration
+#    uses: ./.github/workflows/continuous-integration.yml
   publish-javadoc:
     name: Publish Javadoc
     uses: ./.github/workflows/publish-javadoc.yml
