@@ -3,6 +3,11 @@ name: Pipeline Continuous Deployment
 on:
   push:
     branches: [main]
+  workflow_run:
+    workflows: [ "Pipeline Continuous Integration" ]
+    types:
+      - completed
+
 permissions: write-all
 
 jobs:
