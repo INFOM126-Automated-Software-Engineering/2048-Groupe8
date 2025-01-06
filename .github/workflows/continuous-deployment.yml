@@ -10,6 +10,7 @@ jobs:
   continuous-integration:
     name: Pipeline Continuous Integration
     uses: ./.github/workflows/continuous-integration.yml
+    secrets: inherit
   publish-javadoc:
     needs: continuous-integration
     name: Publish Javadoc
