@@ -4,13 +4,13 @@ on:
   workflow_call: # Allows workflows to be reused by other workflows.
   pull_request: # Allows the workflow to be triggered on pull request events.÷
 
-permissions: write-all
+
 
 jobs:
   telemetry:
     name: Telemetry Job
     runs-on: ubuntu-latest
-
+    permissions: write-all
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
