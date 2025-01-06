@@ -3,15 +3,16 @@ name: Pipeline Continuous Deployment
 on:
   push:
     branches: [main]
-  workflow_run:
-    workflows: ["Pipeline Continuous Integration"]
-    types:
-      - completed
 
 permissions: write-all
 
 jobs:
+  continuous-integration:
+    name: Pipeline Continuous Integration
+    uses: ./.github/workflows/continuous-integration.yml
+    secrets: inherit
   publish-javadoc:
+    needs: continuous-integration
     name: Publish Javadoc
     uses: ./.github/workflows/publish-javadoc.yml
   deploy-website:
